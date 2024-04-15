@@ -8,13 +8,13 @@ batchnorm(입력 채널 수 x 2)
 
 총 파라미터 수 = convolution layer + fully connected layer + batchnorm layer
 
-즉, LeNet5 model의 총 파라미터 개수는 **61990개** 
+즉, 구현한 LeNet5 model의 총 파라미터 개수는 **61990개** 
 
 1.2 **custom MLP:**
 
 fully connected layer(입력 노드 수 x출력 노드 수 + 출력 노드 수의 bias)
 
-custom MLP의 총 파라미터 수는 **62110개**
+구현한 custom MLP의 총 파라미터 수는 **62110개**
 
 
 2. LeNet5, custom MLP의 loss, acc plot
@@ -32,7 +32,7 @@ custom MLP의 총 파라미터 수는 **62110개**
 
 <img width="887" alt="mlp_plot" src="https://github.com/LeeUichann/Mnist_project/assets/166983272/2848deec-2907-40c8-856d-9688ab93b8bc">
 
-plot을 보면 LeNet5가 train Loss 및 validation loss가 더 빨리 떨어지는 것을 볼 수 있으며 validation accuracy 지표 또한 custom MLP보다 높은 것을 볼 수 았다.
+plot을 보면 LeNet5가 train Loss 및 validation loss가 더 빨리 떨어지는 것을 볼 수 있으며 validation accuracy 지표 또한 custom MLP보다 높은 것을 볼 수 있다.
 
 즉, 구현한 LeNet5의 accuracy는 논문의 accuracy와 비슷했고 custom MLP보다 성능이 좋다고 볼 수 있다.
 
@@ -41,3 +41,12 @@ plot을 보면 LeNet5가 train Loss 및 validation loss가 더 빨리 떨어지�
 
 본 구현에서 LeNet 성능을 올리기위해 batchnormalization과 dropout을 사용했다.
 
+batchnorm과 dropout의 효과를 검증하기 위해 regularization 기법을 사용하지 않은 LeNet model의 loss와 accuracy를 plot
+
+<img width="723" alt="스크린샷 2024-04-15 오후 7 23 35" src="https://github.com/LeeUichann/Mnist_project/assets/166983272/b91bfde5-9bed-44e0-aac7-6260d4e1ef78"><br/><br/>
+
+<img width="888" alt="스크린샷 2024-04-15 오후 7 23 48" src="https://github.com/LeeUichann/Mnist_project/assets/166983272/9ff9e5d4-3c87-4a58-9bcc-38742ae2bdff">
+
+앞서 본 regularization을 사용한 LeNet model보다 accuracy가 안 좋은 것을 볼 수 있었고 validation loss가 더 빨리 상승하는 것을 볼 수 있다.
+
+즉, batchnorm과 dropout이 LeNet model을 overfitting 문제를 완화시키며 성능이 더 좋은 것을 확인할 수 있었다.
